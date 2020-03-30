@@ -9,10 +9,8 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
-import java.util.function.ToIntFunction;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
+import java.util.function.*;
+import java.util.stream.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -115,12 +113,9 @@ public class StreamAssignment {
 
         Person[] result = null;
 
-        List<Person> erikList = people.stream()
+        result = people.stream()
                 .filter(p -> p.getFirstName().equals("Erik"))
-                .collect(Collectors.toList());
-
-        result = erikList.stream().toArray(Person[]::new);
-
+                .toArray(Person[]::new);
 
         assertNotNull(result);
         assertEquals(expectedLength, result.length);
